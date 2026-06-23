@@ -11,23 +11,23 @@ Explanation: I used "ln" to create a hard link, which points directly to the ori
 
 3. Command: ls -li
 Output: total 16
-46410 drwxr-xr-x 4 swapnil swapnil 4096 Sep 14  2025 Desktop
- 1600 -rw-r--r-- 2 swapnil swapnil   15 Jun 23 20:32 hardlink.txt
- 1600 -rw-r--r-- 2 swapnil swapnil   15 Jun 23 20:32 original.txt
- 1597 drwxr-x--- 3 swapnil swapnil 4096 Jun 23 20:21 secure_workspace
- 1601 lrwxrwxrwx 1 swapnil swapnil   12 Jun 23 20:32 symlink.txt -> original.txt
+        46410 drwxr-xr-x 4 swapnil swapnil 4096 Sep 14  2025 Desktop
+         1600 -rw-r--r-- 2 swapnil swapnil   15 Jun 23 20:32 hardlink.txt
+         1600 -rw-r--r-- 2 swapnil swapnil   15 Jun 23 20:32 original.txt
+         1597 drwxr-x--- 3 swapnil swapnil 4096 Jun 23 20:21 secure_workspace
+         1601 lrwxrwxrwx 1 swapnil swapnil   12 Jun 23 20:32 symlink.txt -> original.txt
 Explanation: I ran "ls -li" to view the inode numbers of all three files. I observed that "original.txt" and "hardlink.txt" share the exact same inode number, while "symlink.txt" has a different, unique inode number.
 
 
 4. Command: stat original.txt
 Output:   File: original.txt
-  Size: 15              Blocks: 8          IO Block: 4096   regular file
-Device: 8,48    Inode: 1600        Links: 2
-Access: (0644/-rw-r--r--)  Uid: ( 1000/ swapnil)   Gid: ( 1000/ swapnil)
-Access: 2026-06-23 20:32:17.949875709 +0530
-Modify: 2026-06-23 20:32:17.949875709 +0530
-Change: 2026-06-23 20:32:32.614096906 +0530
- Birth: 2026-06-23 20:32:17.949875709 +0530
+          Size: 15              Blocks: 8          IO Block: 4096   regular file
+        Device: 8,48    Inode: 1600        Links: 2
+        Access: (0644/-rw-r--r--)  Uid: ( 1000/ swapnil)   Gid: ( 1000/ swapnil)
+        Access: 2026-06-23 20:32:17.949875709 +0530
+        Modify: 2026-06-23 20:32:17.949875709 +0530
+        Change: 2026-06-23 20:32:32.614096906 +0530
+         Birth: 2026-06-23 20:32:17.949875709 +0530
 Explanation: I used the "stat" utility to collect detailed metadata about the original file. This revealed precise information like its access times, block size, and the fact that its "Links" counter was set to 2 (due to the hard link).
 
 
