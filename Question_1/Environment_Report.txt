@@ -1,0 +1,48 @@
+LINUX ENVIRONMENT VERIFICATION REPORT
+
+
+1. Command: id
+Output: uid=1000(swapnil) gid=1000(swapnil) groups=1000(swapnil),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+Explanation: I ran the "id" command to verify my current user identity. This confirmed my username and showed the specific user and system groups my account belongs to.
+
+
+2. Command: echo $SHELL
+Output: /bin/bash
+Explanation: I used the "echo $SHELL" command to print the environment variable for my shell. This verifies that I am currently operating within the Bash shell environment.
+
+
+3. Command: pwd
+Output: /home/swapnil
+Explanation: The "pwd" (print working directory) command was executed to verify my exact location in the file system. It confirms I am in my correct user home directory.
+
+
+4. Command: ls -la
+Output: total 72
+        drwxr-x--- 6 swapnil swapnil  4096 Sep 14  2025 .
+        drwxr-xr-x 3 root    root     4096 Aug  7  2025 ..
+        -rw------- 1 swapnil swapnil 14440 Oct 16  2025 .bash_history
+        -rw-r--r-- 1 swapnil swapnil   220 Aug  7  2025 .bash_logout
+        -rw-r--r-- 1 swapnil swapnil  3771 Aug  7  2025 .bashrc
+        drwx------ 2 swapnil swapnil  4096 Aug  7  2025 .cache
+        drwxr-xr-x 2 swapnil swapnil  4096 Aug  8  2025 .landscape
+        -rw------- 1 swapnil swapnil    20 Aug 12  2025 .lesshst
+        drwxr-xr-x 3 swapnil swapnil  4096 Aug  7  2025 .local
+        -rw-rw-r-- 1 swapnil swapnil     0 Jun 23 20:12 .motd_shown
+        -rw-r--r-- 1 swapnil swapnil   807 Aug  7  2025 .profile
+        -rw-r--r-- 1 swapnil swapnil     0 Aug  7  2025 .sudo_as_admin_successful
+        -rw------- 1 swapnil swapnil 15432 Sep 14  2025 .viminfo
+        drwxr-xr-x 4 swapnil swapnil  4096 Sep 14  2025 Desktop
+Explanation: I ran "ls -la" to display all files and directories in my current workspace, including hidden files. This gives me a complete view of the workspace's contents and their current permissions.
+
+
+5. Command: ping -c 4 google.com
+Output: PING google.com (192.178.173.100) 56(84) bytes of data.
+        64 bytes from lcbome-in-f100.1e100.net (192.178.173.100): icmp_seq=1 ttl=114 time=21.2 ms
+        64 bytes from lcbome-in-f100.1e100.net (192.178.173.100): icmp_seq=2 ttl=114 time=15.6 ms
+        64 bytes from lcbome-in-f100.1e100.net (192.178.173.100): icmp_seq=3 ttl=114 time=15.2 ms
+        64 bytes from lcbome-in-f100.1e100.net (192.178.173.100): icmp_seq=4 ttl=114 time=14.5 ms
+
+        --- google.com ping statistics ---
+        4 packets transmitted, 4 received, 0% packet loss, time 3270ms
+        rtt min/avg/max/mdev = 14.482/16.610/21.209/2.683 ms
+Explanation: I used the "ping" command with the "-c 4" flag to send exactly four data packets to an external server. The successful replies verified that my Linux machine has active outbound network connectivity.
