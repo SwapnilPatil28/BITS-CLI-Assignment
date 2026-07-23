@@ -8,5 +8,5 @@ Output: Read ID: 1, Name: Alice, Salary: 50000.00
 Explanation: I executed the program. The output successfully displayed the updated salary for the second employee, confirming that I correctly moved the file pointer and overwrote specific bytes without corrupting the rest of the binary file.
 
 Command: ls -l employees.dat
-Output: -rwxrwxrwx 1 swapnil swapnil 56 Jul 23 16:16 employees.dat
-Explanation: I checked the newly created file. I observed the file has strict rw------- (0600) permissions, verifying the security requirement specified in the open() call.
+Output: -rwxrwxrwx 1 swapnil swapnil 56 Jul 23 16:16 employees.dat  
+Explanation: I checked the newly created file. Although I specified strict 0600 permissions in the open() system call for security, the output shows -rwxrwxrwx because I am running WSL in a mounted Windows directory, which overrides strict Linux file permissions.
