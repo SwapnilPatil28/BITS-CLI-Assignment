@@ -1,0 +1,11 @@
+Design and Efficiency of the Pipeline:
+
+    tail -f: Efficiently reads only the newest lines added to a log file without reopening or rereading the massive historical log data.
+
+    | (Pipe): Streams the output of tail directly into the memory space of grep, bypassing the need for intermediate temporary files.
+
+    grep "ERROR": Filters out noisy standard logs in real-time, matching only strings containing "ERROR".
+
+    tee -a error_report.txt: Takes the filtered stream and splits it; it appends the stream to our permanent report file.
+
+    > /dev/null: Discards the standard terminal output from tee. This fulfills the requirement to "suppress unnecessary output" on the admin's screen, ensuring terminal resources aren't wasted rendering text.

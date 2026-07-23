@@ -1,0 +1,9 @@
+To test this, first open a terminal and run echo "ERROR: Disk full" >> app.log to simulate log generation.
+
+Command: tail -f app.log | grep --line-buffered "ERROR" | tee -a error_report.txt > /dev/null
+Output: No Output(It will just sit there waiting).
+Explanation: I ran this command pipeline to monitor the log. tail -f kept the stream open reading new data, grep filtered out only the errors, and tee appended the findings to the report while the standard output was discarded.
+
+Command: cat error_report.txt
+Output: ERROR: Disk full
+Explanation: I verified the output of the pipeline by reading the report file. I observed that the simulated "ERROR" string I injected was successfully captured and stored.

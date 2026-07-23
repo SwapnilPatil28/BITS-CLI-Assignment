@@ -1,0 +1,10 @@
+Command: gcc monitor.c -o monitor
+Output: (No output, compilation successful)
+Explanation: I compiled the C program using the GNU C Compiler. The compilation was successful without syntax errors, producing an executable named monitor.
+
+Command: ./monitor
+Output: Parent (PID: 14971) is monitoring child (PID: 14972)...
+        Child process (PID: 14972) is running...
+        Parent: Child process is unresponsive. Terminating...
+        Parent: Cleanup complete. Exiting.
+Explanation: I ran the executable. I observed the parent process create a child, wait for 3 seconds, and then successfully send a SIGKILL signal to terminate the infinitely looping child, leaving no zombie processes behind.

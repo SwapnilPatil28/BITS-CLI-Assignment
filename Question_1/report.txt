@@ -1,0 +1,4 @@
+--- Processing Report ---
+Total Files Processed: 3
+Unique Files Backed Up: 2
+Duplicate Files Found: 1

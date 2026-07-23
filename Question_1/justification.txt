@@ -1,0 +1,8 @@
+Justification of techniques:
+
+
+Commands: md5sum is highly efficient for verifying file integrity and finding exact duplicates regardless of the file name. awk is used to parse out just the hash string.
+
+Redirection: exec 2> error_log.txt globally redirects all standard error (file descriptor 2) output for the entire script into a dedicated log, ensuring clean terminal output. > and >> are used to overwrite and append text to the report, respectively.
+
+File Handling: Using associative arrays (declare -A) to store hashes provides an O(1) lookup time to check if a file's content has already been processed, which is highly optimal for hundreds of files.

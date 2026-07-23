@@ -1,0 +1,11 @@
+Contribution of System Calls:
+
+    open(): Initializes the file descriptor. Using O_RDWR | O_CREAT allows reading/writing and creation, while 0600 strictly secures the file for the owner only.
+
+    write(): Writes the binary structure directly to disk in a contiguous block, which is faster and more secure than formatted string writes.
+
+    lseek(): This is the core of the update logic. By calculating sizeof(Employee) * index, lseek() jumps directly to a specific byte offset. This allows updating a single record without loading or rewriting the entire file into memory.
+
+    read(): Pulls the precise byte chunk back into the Employee struct based on the current pointer location.
+
+    close(): Safely releases the file descriptor back to the OS.

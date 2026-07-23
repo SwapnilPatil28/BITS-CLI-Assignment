@@ -1,0 +1,19 @@
+Evaluation of Recovery Mechanisms:
+
+    1. Swap Files (.filename.swp): vi/vim automatically creates a hidden swap file the moment you begin editing. It records unsaved changes block by block. If a crash occurs, this file remains on disk because it wasn't gracefully deleted by a standard exit.
+
+    2. Undo History: While highly useful for rolling back mistakes during an active session, standard undo history resides in volatile RAM. It is instantly lost during a system crash (unless persistent undo files are explicitly configured, which is not the default).
+
+    3. Registers: Used for yanking (copying) and pasting text. Like undo history, standard registers are stored in volatile memory and do not survive a sudden power loss or kernel panic.
+
+    4. Backup Files (filename~): A backup file is a copy of the file as it existed before you opened it for editing. While it protects against accidental overwrites, it does not contain any of the new unsaved edits made immediately prior to the crash.
+
+    5. Auto-recovery: This relies on the swap file. When reopening the crashed file, vi detects the orphaned swap file and prompts the user to recover the buffer.
+
+
+Proposed Reliable Strategy & Justification:
+The most reliable recovery strategy is relying on the Swap File (.swp) via the -r flag.
+
+    Action: When the system boots back up, the user should execute vi -r config_file.conf.
+
+    Justification: The swap file is the only mechanism natively designed to track delta changes during an active editing session and sync them to persistent storage. Because it writes to the disk dynamically as you type, it retains the closest possible state of the file right before the crash, whereas registers and undo trees are wiped from RAM, and backup files only hold the old version of the configuration.

@@ -1,0 +1,3 @@
+How process creation, waiting, and signal handling work together:
+
+The fork() system call duplicates the parent to create a child process. Because the server needs to keep running, the parent cannot block entirely using a standard wait(). Instead, we use signal(SIGCHLD, handle_sigchld). When a child terminates, the OS sends a SIGCHLD signal to the parent. The handler uses waitpid(-1, NULL, WNOHANG) to reap the dead child process immediately in the background, strictly preventing zombie processes. If a child hangs (simulated by the infinite loop), the parent utilizes kill(pid, SIGKILL) to force termination, which then triggers the SIGCHLD cleanup handler automatically.

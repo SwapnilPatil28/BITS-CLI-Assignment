@@ -1,0 +1,18 @@
+Command: chmod +x script.sh
+Output: (No output)
+Explanation: I modified the permissions of the script to make it executable. This allows the shell to run the file as a program.
+
+Command: ./script.sh
+Output: Duplicate found: submissions/student3.txt
+        --- Processing Report ---
+        Total Files Processed: 3
+        Unique Files Backed Up: 2
+        Duplicate Files Found: 1
+Explanation: I executed the script. It processed the dummy submission files, identified student3.txt as a duplicate based on its hash, and successfully generated report.txt and an empty error_log.txt.
+
+Command: cat report.txt
+Output: --- Processing Report ---
+        Total Files Processed: 3
+        Unique Files Backed Up: 2
+        Duplicate Files Found: 1
+Explanation: I viewed the final generated report. The output confirmed that 3 files were processed, 2 were unique, and 1 was a duplicate.
